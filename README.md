@@ -1,6 +1,4 @@
-# polyu_bse2610
-
-# Occupancy Estimation
+# PolyU BSE2610 Group Project_Occupancy Estimation
 
 PCA + Bayesian linear regression (PyMC) for room occupancy prediction.
 
