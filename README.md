@@ -1,3 +1,5 @@
+# polyu_bse2610
+
 # Occupancy Estimation
 
 PCA + Bayesian linear regression (PyMC) for room occupancy prediction.
@@ -24,4 +26,3 @@ Generated in `figures/`:
 - `fig2_mcmc_trace.png`
 - `fig3_posterior_density.png`
 - `fig4_prediction_band.png`
-# polyu_bse2610
