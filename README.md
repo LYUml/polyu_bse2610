@@ -24,3 +24,4 @@ Generated in `figures/`:
 - `fig2_mcmc_trace.png`
 - `fig3_posterior_density.png`
 - `fig4_prediction_band.png`
+# polyu_bse2610
