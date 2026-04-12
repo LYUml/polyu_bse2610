@@ -3,6 +3,7 @@ import subprocess
 import os
 import importlib.util
 import warnings
+import pandas as pd
 
 
 warnings.filterwarnings("ignore", category=FutureWarning, module=r"arviz(\..*)?")
@@ -79,7 +80,17 @@ if __name__ == "__main__":
 
     from data_engine import load_and_preprocess, run_pca_fusion
     from bayesian_sim import run_mcmc_simulation, generate_posterior_predictions
-    from visualizer import plot_pca_variance, plot_mcmc_diagnostics, plot_prediction_band
+    from regression_models import train_and_evaluate_regressors, build_univariate_relationship
+    from visualizer import (
+        plot_pca_variance,
+        plot_mcmc_diagnostics,
+        plot_prediction_band,
+        plot_regression_predictions,
+        plot_regression_metrics,
+        plot_regression_coefficients,
+        plot_univariate_linear_relationship,
+        plot_3d_pca_scatter,
+    )
 
     data_path = os.path.join(project_dir, "Occupancy_Estimation.csv")
     df_clean = load_and_preprocess(data_path)
@@ -87,9 +98,33 @@ if __name__ == "__main__":
 
     bayesian_model, trace = run_mcmc_simulation(X_train, y_train)
     mean_pred, lower_bound, upper_bound = generate_posterior_predictions(bayesian_model, trace, X_test, y_test)
+    metrics_df, predictions, coefficients_df = train_and_evaluate_regressors(
+        X_train,
+        X_test,
+        y_train,
+        y_test,
+        feature_names,
+    )
+    univariate_data = build_univariate_relationship(X_train, y_train, feature_names)
 
     plot_pca_variance(pca_model, save_dir=output_dir)
     plot_mcmc_diagnostics(trace, save_dir=output_dir)
     plot_prediction_band(y_test, mean_pred, lower_bound, upper_bound, save_dir=output_dir)
+    plot_regression_predictions(y_test, predictions, save_dir=output_dir)
+    plot_regression_metrics(metrics_df, save_dir=output_dir)
+    plot_regression_coefficients(coefficients_df, save_dir=output_dir)
+    plot_univariate_linear_relationship(univariate_data, save_dir=output_dir)
 
+    # Prepare PCA data for 3D scatter plot
+    pca_data = pd.DataFrame(
+        pca_model.transform(df_clean[['S1_TEMP', 'S2_TEMP', 'S3_TEMP', 'S4_TEMP', 'S1_LIGHT', 'S2_LIGHT', 'S3_LIGHT', 'S4_LIGHT']]),
+        columns=['MICROCLIMATE_PC1', 'MICROCLIMATE_PC2', 'MICROCLIMATE_PC3']
+    )
+    target = df_clean['ROOM_OCCUPANCY_COUNT']
+
+    # Plot 3D PCA scatter
+    plot_3d_pca_scatter(pca_data, target, save_dir=output_dir)
+
+    print("\nRegression metrics (OLS/Ridge/Lasso):")
+    print(metrics_df.to_string(index=False))
     print(f"Saved figures to: {output_dir}")
