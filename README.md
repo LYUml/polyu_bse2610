@@ -1,6 +1,6 @@
 # PolyU BSE2610 Group Project_Occupancy Estimation
 
-PCA + Bayesian linear regression (PyMC) for room occupancy prediction.
+PCA + Bayesian and traditional regression (OLS, Ridge, Lasso) for room occupancy prediction.
 
 ## Important Prerequisites for PyMC Acceleration
 
@@ -30,13 +30,19 @@ python main.py
 - `main.py`: run full pipeline
 - `data_engine.py`: preprocessing + PCA
 - `bayesian_sim.py`: Bayesian modeling + posterior prediction
+- `regression_models.py`: OLS, Ridge, Lasso regression analysis
 - `visualizer.py`: figure plotting
 
 ## Output
 
 Generated in `figures/`:
 
-- `fig1_pca_variance.png`
-- `fig2_mcmc_trace.png`
-- `fig3_posterior_density.png`
-- `fig4_prediction_band.png`
+- `fig1_pca_variance.png`: PCA variance explained (individual + cumulative)
+- `fig2_mcmc_trace.png`: Bayesian MCMC trace diagnostics
+- `fig3_posterior_density.png`: Posterior density for top features
+- `fig4_prediction_band.png`: Bayesian prediction band (95% CI)
+- `fig5_regression_predictions.png`: OLS vs Ridge vs Lasso predictions
+- `fig6_regression_metrics.png`: Regression performance metrics (RMSE, MAE, R²)
+- `fig7_regression_coefficients.png`: Coefficient comparison (top features)
+- `fig8_two_variable_relationship.png`: Single-feature regression (scatter + fits)
+- `fig9_3d_pca_scatter.png`: 3D scatter of PCA components with occupancy
