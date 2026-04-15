@@ -56,12 +56,20 @@ The project structure is as follows:
 
 Generated in `figures/`:
 
-- **`fig1_pca_variance.png`**: PCA variance explained (individual + cumulative)
-- **`fig2_mcmc_trace.png`**: Bayesian MCMC trace diagnostics
-- **`fig3_posterior_density.png`**: Posterior density for top features
-- **`fig4_prediction_band.png`**: Bayesian prediction band (95% CI)
-- **`fig5_regression_predictions.png`**: OLS vs Ridge vs Lasso predictions
-- **`fig6_regression_metrics.png`**: Regression performance metrics (RMSE, MAE, R²)
-- **`fig7_regression_coefficients.png`**: Coefficient comparison (top features)
-- **`fig8_two_variable_relationship.png`**: Single-feature regression (scatter + fits)
-- **`fig9_3d_pca_scatter.png`**: 3D scatter of PCA components with occupancy
+- `fig1_pca_variance.png`: PCA variance explained (individual + cumulative)
+- `fig2_mcmc_trace.png`: Bayesian MCMC trace diagnostics
+- `fig3_posterior_density.png`: Posterior density for top features
+- `fig4_prediction_band.png`: Bayesian prediction band (95% CI)
+- `fig5_regression_predictions.png`: OLS vs Ridge vs Lasso predictions
+- `fig6_regression_metrics.png`: Regression performance metrics (RMSE, MAE, R²)
+- `fig7_regression_coefficients.png`: Coefficient comparison (top features)
+- `fig8_two_variable_relationship.png`: Single-feature regression (scatter + fits)
+- `fig9_3d_pca_scatter.png`: 3D scatter of PCA components with occupancy
+
+## Interactive HTML
+
+- `fig9.html`: Mobile-friendly interactive 3D PCA scatter visualization using Plotly.js.
+    - Supports Chinese/English language switching and light/dark theme toggle (default: light mode)
+    - Includes touch interactions for phone/tablet (single-finger rotate, two-finger zoom/pan)
+    - Uses lazy loading and device-based point downsampling for better mobile performance
+    - Preserves PCA data processing logic and supports offline cache via Service Worker
