@@ -25,11 +25,11 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Files
+## Main Files
 
 The project structure is as follows:
 
-```
+```plaintext
 .
 ├── main.py
 │   ├── configure_compiler_path()
