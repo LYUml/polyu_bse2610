@@ -29,26 +29,28 @@ python main.py
 
 The project structure is as follows:
 
-- **main.py**
-  - `configure_compiler_path()`
-  - `bootstrap_environment()`
-  - **data_engine.py**
-    - `load_and_preprocess()`
-    - `run_pca_fusion()`
-    - `run_mcmc_simulation()`
-    - `generate_posterior_predictions()`
-  - **regression_models.py**
-    - `train_and_evaluate_regressors()`
-    - `build_univariate_relationship()`
-  - **visualizer.py**
-    - `plot_pca_variance()`
-    - `plot_mcmc_diagnostics()`
-    - `plot_prediction_band()`
-    - `plot_regression_predictions()`
-    - `plot_regression_metrics()`
-    - `plot_regression_coefficients()`
-    - `plot_univariate_linear_relationship()`
-    - `plot_3d_pca_scatter()`
+```
+└── main.py
+    ├── configure_compiler_path()
+    ├── bootstrap_environment()
+    ├── data_engine.py
+    │   ├── load_and_preprocess()
+    │   ├── run_pca_fusion()
+    │   ├── run_mcmc_simulation()
+    │   └── generate_posterior_predictions()
+    ├── regression_models.py
+    │   ├── train_and_evaluate_regressors()
+    │   └── build_univariate_relationship()
+    └── visualizer.py
+        ├── plot_pca_variance()
+        ├── plot_mcmc_diagnostics()
+        ├── plot_prediction_band()
+        ├── plot_regression_predictions()
+        ├── plot_regression_metrics()
+        ├── plot_regression_coefficients()
+        ├── plot_univariate_linear_relationship()
+        └── plot_3d_pca_scatter()
+```
 
 ## Output
 
